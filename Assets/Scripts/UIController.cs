@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -10,7 +11,11 @@ public class UIController : MonoBehaviour
     private Text dayText;
     [SerializeField]
     private TMP_Text cityText;
+    [SerializeField]
+    private TMP_Text startGameBtnText;
     private CityController city;
+    [SerializeField]
+    private GameObject helpWindow;
     private void Start()
     {
         city = gameObject.GetComponent<CityController>();
@@ -32,6 +37,23 @@ public class UIController : MonoBehaviour
             (int)city.Food,
             (int)city.JobsCurrent*2);
     
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void StartGame()
+    {
+        startGameBtnText.text = "End Turn";
+    }
+    public void OpenHelpWindow()
+    {
+        helpWindow.SetActive(true);
+    }
+    public void CloseHelpWindow()
+    {
+        helpWindow.SetActive(false);
+
     }
 
 }

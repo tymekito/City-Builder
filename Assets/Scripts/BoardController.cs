@@ -7,7 +7,7 @@ public class BoardController : MonoBehaviour
     private BuildingController[,] buildings = new BuildingController[100, 100];
     public void AddBuilding(BuildingController building, Vector3 position)
     {
-        buildings[(int)position.x, (int)position.z] = Instantiate(building, position, Quaternion.identity); // object rotation that the object has
+        buildings[(int)position.x, (int)position.z] = Instantiate(building, position,Quaternion.Euler(0,180,0)); // object rotation that the object has
     }
     public BuildingController CheckForBuildingAtPosition(Vector3 position)
     {

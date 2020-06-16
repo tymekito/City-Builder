@@ -16,13 +16,13 @@ public class CityController : MonoBehaviour
     // 0 houses
     // 1 farms 
     // 2 factories
+    public int startCash;
     private UIController uIController;
+
     private void Start()
     {
         uIController = GetComponent<UIController>();
-        Cash = 50;
-        Food = 0;
-        JobsCeiling = 0;
+        Cash = startCash;
     }
     public void EndTurn()
     {
@@ -56,13 +56,13 @@ public class CityController : MonoBehaviour
     }
     void CalculatePopulation()
     {
-        PopulationCeiling = buildingCounts[1] * 5;
+        PopulationCeiling = buildingCounts[1] * 5;// house gives 5 people
         if(Food>=PopulationCurrent&&PopulationCurrent<PopulationCeiling)
         {
             // people sub food units
-            Food -= PopulationCurrent*.25f;
+            Food -= PopulationCurrent*.2f;// 4 people take 1 unit of food
             // add some people to current population
-            PopulationCurrent = Mathf.Min(PopulationCurrent += Food * .25f, PopulationCeiling);
+            PopulationCurrent = Mathf.Min(PopulationCurrent += Food * .2f, PopulationCeiling);
         }
         else if(Food<PopulationCurrent)
         {
